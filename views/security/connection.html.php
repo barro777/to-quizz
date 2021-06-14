@@ -1,43 +1,54 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <title>Title</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<?php
+//if (isset$_SESSION['arrayError']) {
+  # code...
+if (isset($_SESSION['arrayError'])) {
+  $arrayErrors=$_SESSION['arrayError'];
+  unset($_SESSION["arrayError"]);
+}
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  </head>
-  <body>
-  <div class="card text-red bg-secondary col-8 offset-2">
-  <img src="Images/background.jpeg" class="img-responsive" alt="">
-      <h3 class="card-title text-center">Connection au Quizz 221 </h3>
-      
+
+//require '/var/www/html/moiphp/quizz/lib/validator.php';
+require ROUTE_DIR.'/views/inc/header.inc.html.php'
+?>
+  <body class="body">
+  <header class="head"style="height:60px;">
+  <h2><img class="img"src=<?=WEB_ROUTE."img/logo.jpeg"?>><span id="marq" class="offset-4 text-aligne-center mb-2" style="color: white;margin:none">Le plaisir de jouer</span>
+ </h2>
+  </header>
+            <form method="POST" class="form" >
+            <!--<div class="card text-red bg-red col-8 offset-2 mt-5" style="background-color:red"></div>-->
+                            <input type="hidden" name="controlleur" value="security">
+                                          <input type="hidden" name="action" value="connection">
+                    <div class="container  mb-7 border solid-25% col-6"style="background-color:white;">
+                    <h3 id="log"class="card-title text-center col-form-label" style="color:red;">Login form </h3>
+                    <div class="border solid-10 col-sm-4 offset-4" style="color: red;"></div>
+                        <div class="mb-0 row-2 col-9 offset-2">
+                          <label for="inputPassword" class="col-sm-2 col-form-label">Email</label>
+                          <div class="col-sm-10">
+                            <input type="text" name="login" class="form-control" id="login" placeholder="email@example.com">
+                            <small><?php echo isset($arrayError['login'])? $arrayError['login']:"";?></small>
+                          </div>
+                        </div>
+                        <div class="mb-2  col-9 offset-2">
+                          <label for="inputPassword" class="col-sm-4 col-form-label">Mot de pass</label>
+                          <div class="col-sm-10">
+                            <input type="password"name="pass" class="form-control" id="pass"><small><?php echo isset($arrayError['pass'])? $arrayError['pass']:"";?></small>
+                            
+                          </div>
+                        </div>
+                        <div id="barro" class="offset-4 col-sm-2 mt-2 text-center" ><button type="button" class="btn btn-outline-no danger">Connection</button></div>
+                        <a class='offset-8 'style="color:red;" href="<?= WEB_ROUTE.'?controlleur=security&views=inscription'?>">S'inscrire pour joueur</a>
+                    </div>
+              </form> 
+ </div>
+ 
+ 
+ 
+ 
+ <?php
+
+      require ROUTE_DIR.'/views/inc/footer.inc.html.php';
+   ?>
+
+ 
     
-  </div>
-                        <input type="hidden" name="" value="">
-                        <input type="hidden" name="action" value="">
- <div class="container row-md-3 border solid-10px">
-      <div class="mb-6 row-col-5 offset-3 ">
-        <label for="inputPassword" class="col-sm-2 col-form-label">Email</label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputPassword" value="email@example.com">
-        </div>
-      </div>
-      <div class="mb-3 row-5 col-5 ml-15 offset-3">
-        <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-        <div class="col-sm-10">
-          <input type="password" class="form-control" id="inputPassword">
-        </div>
-      </div>
-      <div class="offset-6"><button type="button" class="btn btn-outline-danger">valider</button></div>
-</div>
-      
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
-</html>

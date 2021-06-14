@@ -1,8 +1,7 @@
 <?php
 
-define('WEB ROUTE','http://localhost:8000/index.php');
-define('ROUTE_DIR', '');
-dirname(__DIR__);
+define("WEB_ROUTE",'http://localhost:8000/');
+define("ROUTE_DIR",str_replace('public','', $_SERVER['DOCUMENT_ROOT']));
 
 
 ?>
